@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>开元棋牌 · 资料索引与信息整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f8fa;
+            color: #1e293b;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* hero 深色区域 */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 3rem 1.5rem 2.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 30% 40%, rgba(56, 189, 248, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: #f1f5f9;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0.6rem auto 1.2rem;
+            color: #94a3b8;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: #7dd3fc;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* 主要内容区 */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.5rem 1.2rem 3rem;
+            flex: 1;
+        }
+
+        section {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+            color: #0f172a;
+            border-left: 4px solid #2563eb;
+            padding-left: 0.75rem;
+            line-height: 1.3;
+        }
+
+        section h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 1.2rem 0 0.5rem;
+            color: #1e293b;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 0.8rem;
+        }
+
+        .card-item {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e9edf2;
+        }
+
+        .card-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-item p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin: 0.2rem 0 0;
+        }
+
+        .faq-list {
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .faq-item {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-a {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+            border-bottom-color: #1d4ed8;
+        }
+
+        .inline-link {
+            border-bottom: 1px dashed #93c5fd;
+        }
+
+        /* 底部 */
+        .footer-links {
+            background: #f1f5f9;
+            border-radius: 18px;
+            padding: 1.6rem 2rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            margin: 0 0.5rem;
+            white-space: nowrap;
+        }
+
+        .footer-note {
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.98rem;
+            }
+            section {
+                padding: 1.5rem 1.2rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+            .container {
+                padding: 1.8rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem 1.8rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .footer-links {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO 深色头图 -->
+    <header class="hero">
+        <div class="hero-inner">
+            <span class="hero-tag">📋 资料索引 · 信息整理</span>
+            <h1>开元棋牌 · 知识库与梳理</h1>
+            <p>从规则、术语到常见疑问，将分散信息进行系统化整理，便于快速查阅与理解。</p>
+        </div>
+    </header>
+
+    <!-- 正文区 -->
+    <div class="container">
+
+        <!-- 优势区 / 特点 -->
+        <section>
+            <h2>整理视角 · 优势与特点</h2>
+            <div class="grid-2">
+                <div class="card-item">
+                    <strong>📂 结构化分类</strong>
+                    <p>将棋牌相关的资料按玩法、计分、规则等维度拆分，降低信息检索成本。</p>
+                </div>
+                <div class="card-item">
+                    <strong>🔍 术语对照</strong>
+                    <p>收录常用术语及变体叫法，帮助新手快速对齐不同平台的表达差异。</p>
+                </div>
+                <div class="card-item">
+                    <strong>📄 规则摘要</strong>
+                    <p>提取通用规则框架，并标注部分地方变体，保持信息简洁。</p>
+                </div>
+                <div class="card-item">
+                    <strong>🧩 场景说明</strong>
+                    <p>结合线上与线下常见场景，说明不同模式下的规则侧重点。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区：资料索引方向 -->
+        <section>
+            <h2>从资料索引角度理解</h2>
+            <p>棋牌类内容体系庞杂，涉及牌型、计分、叫牌顺序、特殊牌组合等多个模块。本次整理以“索引”思路展开：<strong>先划分大项，再细化子项</strong>，并标注常见变体来源。例如不同地区对同花顺的排名优先级可能不同，在资料卡片中会单独备注。</p>
+            <p>此外，部分术语存在跨平台混用情况（如“底分”与“基本注”），在索引中会列出同义或近义表达。这种整理方式更适合需要快速浏览知识框架的用户。</p>
+            <p style="margin-top: 0.8rem;">在整体资料结构中，<a href="https://portal-webs-kaiyuan.com" class="inline-link">开元棋牌</a> 常作为案例平台，用于说明规则在实际界面中的呈现方式。以下 FAQ 也选取了索引过程中常见的几个疑问。</p>
+        </section>
+
+        <!-- FAQ 摘要 -->
+        <section>
+            <h2>FAQ 摘要 · 常见疑问</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <span class="faq-q">Q：牌型大小顺序是否完全统一？</span>
+                    <span class="faq-a">A：主流规则基本一致（皇家同花顺 > 同花顺 > 四条 …），但部分地区将“同花”排在“葫芦”之前，建议以具体平台规则为准。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Q：术语“底注”和“盲注”有何区别？</span>
+                    <span class="faq-a">A：底注通常指每局固定投入，盲注则是强制下注且分大小盲。索引中将二者列为不同层级，避免混淆。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Q：线上平台是否都有“保险”功能？</span>
+                    <span class="faq-a">A：并非所有平台提供；在索引中“保险”被标注为可选规则，并列出常见触发条件（如翻牌后 all-in）。</span>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Q：新手应从哪种玩法开始了解？</span>
+                    <span class="faq-a">A：推荐从“德州扑克”或“斗地主”的简化规则入手，再逐步扩展到复杂变体。资料整理中已标注入门推荐项。</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部链接区 -->
+        <div class="footer-links">
+            <p>📎 更多资料 · 持续整理中</p>
+            <div style="margin: 0.6rem 0;">
+                <a href="https://portal-webs-kaiyuan.com">开元棋牌</a>
+                <span style="color: #94a3b8; margin: 0 0.2rem;">·</span>
+                <a href="#">规则索引</a>
+                <span style="color: #94a3b8; margin: 0 0.2rem;">·</span>
+                <a href="#">术语表</a>
+                <span style="color: #94a3b8; margin: 0 0.2rem;">·</span>
+                <a href="#">场景指南</a>
+            </div>
+            <div class="footer-note">
+                本页为资料整理型介绍，内容仅供信息参考，不构成任何建议。
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
